@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% block title %}
+<title>Shoppify - sales</title>
+{% endblock %}
+
+{% block content %}
+<div class="mx-5 my-3 p-3">
+    <h1>Sales</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="/sales/" method="POST">
+                {% csrf_token%}
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Item Name</label>
+                        <select class="form-select" id="salesItemName" name="salesItemName">
+                            <option value="" selected>--Select--</option>
+                            {% for item in items %}
+                            <option value={{ item.item_name }}>{{ item.item_name }} - {{ item.qty }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Qty</label>
+                        <input type="number" class="form-control" id="salesQty" name="salesQty" value="0"
+                            onchange="salesOnchange()">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Rate</label>
+                        <input type="number" class="form-control" id="salesRate" name="salesRate" value="0.00"
+                            onchange="salesOnchange()">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="salesAmount" name="salesAmount" value="0.00"
+                            readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Discount Percentage</label>
+                        <select class="form-select" id="salesDiscountPercentage" name="salesDiscountPercentage"
+                            onchange="salesOnchange()">
+                            <option value="0" selected>--Select--</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Discount Amount</label>
+                        <input type="number" class="form-control" id="salesDiscountAmount" name="salesDiscountAmount"
+                            value="0.00" readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Net Amount</label>
+                        <input type="number" class="form-control" id="salesNetAmount" name="salesNetAmount" value="0.00"
+                            readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">GST Percentage</label>
+                        <select class="form-select" id="salesGSTPercentage" name="salesGSTPercentage"
+                            onchange="salesOnchange()">
+                            <option value="0" selected>--Select--</option>
+                            <option value="5">5%</option>
+                            <option value="12">12%</option>
+                            <option value="18">18%</option>
+                            <option value="28">28%</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">GST Amount</label>
+                        <input type="number" class="form-control" id="salesGSTAmount" name="salesGSTAmount" value="0.00"
+                            readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Gross Amount</label>
+                        <input type="number" class="form-control" id="salesGrossAmount" name="salesGrossAmount"
+                            value="0.00" readonly>
+                    </div>
+                </div>
+                <div class="col" style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

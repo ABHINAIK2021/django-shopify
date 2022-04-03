@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% block title %}
+<title>Shoppify - inventory</title>
+{% endblock %}
+
+{% block content %}
+<div class="mx-5 my-3 p-3">
+    <h1>Inventory</h1>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in items %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.item_name }}</td>
+                        <td>{{ i.qty }}</td>
+                        <td>{{ i.rate }}</td>
+                        <td>{{ i.amount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

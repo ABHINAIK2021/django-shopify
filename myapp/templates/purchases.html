@@ -1,0 +1,91 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% block title %}
+<title>Shoppify - purchases</title>
+{% endblock %}
+
+{% block content %}
+<div class="mx-5 my-3 p-3">
+    <h1>Purchases</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="/purchases/" method="POST">
+                {% csrf_token%}
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="purchasesItemName" name="purchasesItemName">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Qty</label>
+                        <input type="number" class="form-control" id="purchasesQty" name="purchasesQty" value="0"
+                            onchange="purchasesOnchange()">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Rate</label>
+                        <input type="number" class="form-control" id="purchasesRate" name="purchasesRate" value="0.00"
+                            onchange="purchasesOnchange()">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="purchasesAmount" name="purchasesAmount"
+                            value="0.00" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Discount Percentage</label>
+                        <select class="form-select" id="purchasesDiscountPercentage" name="purchasesDiscountPercentage"
+                            onchange="purchasesOnchange()">
+                            <option value="0" selected>--Select--</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Discount Amount</label>
+                        <input type="number" class="form-control" id="purchasesDiscountAmount"
+                            name="purchasesDiscountAmount" value="0.00" readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Net Amount</label>
+                        <input type="number" class="form-control" id="purchasesNetAmount" name="purchasesNetAmount"
+                            value="0.00" readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">GST Percentage</label>
+                        <select class="form-select" id="purchasesGSTPercentage" name="purchasesGSTPercentage"
+                            onchange="purchasesOnchange()">
+                            <option value="0" selected>--Select--</option>
+                            <option value="5">5%</option>
+                            <option value="12">12%</option>
+                            <option value="18">18%</option>
+                            <option value="28">28%</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">GST Amount</label>
+                        <input type="number" class="form-control" id="purchasesGSTAmount" name="purchasesGSTAmount"
+                            value="0.00" readonly>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Gross Amount</label>
+                        <input type="number" class="form-control" id="purchasesGrossAmount" name="purchasesGrossAmount"
+                            value="0.00" readonly>
+                    </div>
+                </div>
+                <div class="col" style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

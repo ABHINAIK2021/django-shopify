@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %}
+<title>home</title>
+{% endblock %}
+
+{% block content %}
+<div class="mx-5 my-3 p-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <h1 class="text-center text-white">Purchases</h1>
+                            <h1 class="text-center text-white">{{ purchasesItem }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <h1 class="text-center text-white">Sales</h1>
+                            <h1 class="text-center text-white">{{ salesItem }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
